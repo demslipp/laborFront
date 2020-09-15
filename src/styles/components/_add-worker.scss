@@ -1,0 +1,9 @@
+.add-worker {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .title {
+        font-size: large;
+    }
+}
