@@ -105,8 +105,6 @@ const TaskWindow = () => {
 const Body = ({ loading, error, tasks, onClickTask, onRefresh }) => {
     if (error) return 'error'
 
-    // if (loading) return 'Loading...'
-
     return (
         <div>
             {tasks &&

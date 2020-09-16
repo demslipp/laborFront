@@ -10,12 +10,12 @@ const AddWorker = ({ id, employee }) => {
     const Fetch = async () => {
         try {
             const res = await request('/employee/all')
+            console.log('w', res)
             const ids = employee.map((ids) => ids.id)
             const non = res.filter((val) => {
                 console.log('kek', val, !ids.includes(val.id))
                 return !ids.includes(val.id)
             })
-            //employee.filter((e) => !~res.indexOf(e))
             setAllWorkers(res)
             setNonWorker(non)
             setWorkers(employee)
@@ -28,15 +28,13 @@ const AddWorker = ({ id, employee }) => {
         request(`/assignment/assign/e/${idWorker}/t/${id}`)
         setWorkers([...workers, ...allWorkers.filter((val) => val.id === idWorker)])
         setNonWorker([...nonWorker.filter((val) => val.id !== idWorker)])
-        // Fetch()
     }
+
     const handleDeleteEmployee = (idWorker) => {
         request(`/assignment/unassign/e/${idWorker}/t/${id}`)
 
         setWorkers([...workers.filter((val) => val.id !== idWorker)])
-        console.log('kek', [...nonWorker, ...allWorkers.filter((val) => val.id === idWorker)])
         setNonWorker([...nonWorker, ...allWorkers.filter((val) => val.id === idWorker)])
-        // Fetch()
     }
 
     useEffect(() => {
